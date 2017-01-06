@@ -7,8 +7,8 @@ set nocompatible
 
 " Colors **********************************************************************
 "set t_Co=256 " 256 colors
-set background=dark
 syntax on " syntax highlighting
+set background=dark
 colorscheme gruvbox
 
 
@@ -93,19 +93,19 @@ set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 
 " NeoMake *****************************************************************
+autocmd! BufWritePost * Neomake
+autocmd Filetype python let b:neomake_pylint_args = g:neomake_pylint_args + [GetPylintRCArgs()]
+
+
 let g:neomake_open_list=2
 let g:neomake_error_sign   = {'text': 'E➤', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': 'W➤', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_message_sign = {'text': 'M➤', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_info_sign    = {'text': 'I➤', 'texthl': 'NeomakeInfoSign'}
 
-autocmd! BufWritePost * Neomake
-
+"let g:neomake_pylint_append_file = 0
 let g:neomake_python_enabled_makers = ['pylint']
 let g:neomake_pylint_args = neomake#makers#ft#python#pylint()['args']
-"let g:neomake_pylint_append_file = 0
-au Filetype python let b:neomake_pylint_args = g:neomake_pylint_args + [GetPylintRCArgs()]
-
 let g:neomake_go_enabled_makers     = ['go', 'gometalinter']
 let g:neomake_go_gometalinter_maker = {
 \     'args': ['--disable-all', '-E', 'vet', '-E', 'golint', '-E', 'errcheck', '--message-overrides', 'errcheck:{message}', '--sort', 'line', '--tests', '--exclude', 'bindata', '--exclude', '.pb.', '--enable-gc'],
@@ -127,18 +127,17 @@ let NERDTreeMouseMode=1
 
 
 " incsearch ***************************************************************
-"
+let g:incsearch#auto_nohlsearch = 1
+
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
-let g:incsearch#auto_nohlsearch = 1
 map n  <Plug>(incsearch-nohl-n)
 map N  <Plug>(incsearch-nohl-N)
 map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
-
 
 " -----------------------------------------------------------------------------
 " |                               PylintRC stuff                              |
@@ -171,6 +170,4 @@ function! GetPylintRCArgs()
     endif
 endfunction
 
-
-set clipboard=unnamed     " Use the OS clipboard.
 Helptags
