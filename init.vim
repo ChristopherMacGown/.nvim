@@ -32,9 +32,8 @@ set equalalways " Multiple windows, when created, are equal in size
 
 
 "Vertical split then hop to new buffer
-:noremap ,v :vsp^M^W^W<cr>
-:noremap ,h :split^M^W^W<cr>
-
+:noremap <localleader>v :vsp<C-m><C-w><C-w><cr>
+:noremap <localleader>h :split<C-m><C-w><C-w><cr>
 
 " Moving around windows
 map <C-j> <C-w>j<C-w><Esc>
@@ -42,6 +41,24 @@ map <C-k> <C-w>k<C-w><Esc>
 map <C-l> <C-w>l<C-w><Esc>
 map <C-h> <C-w>h<C-w><Esc>
 
+" Moving around buffers
+function! SmartBufferMove(direction) 
+  " Move to the previous or next buffer unless it's a terminal, in which case
+  " skip it.
+  if a:direction " Moving to the next buffer.
+    bnext
+  else
+    bprevious
+  endif
+
+  if matchstr(bufname(""), "term://") ==# "term://"
+    call SmartBufferMove(a:direction)
+  endif
+endfunction
+nmap <localleader>bh :call SmartBufferMove(1)<cr>
+nmap <localleader>bl :call SmartBufferMove(0)<cr>
+nmap <localleader>bd :bd<cr>
+nmap <localleader>bD :bd!<cr>
 
 " Misc ************************************************************************
 set backspace=indent,eol,start
@@ -143,6 +160,11 @@ map g# <Plug>(incsearch-nohl-g#)
 " deoplete ********************************************************************
 let g:deoplete#enable_at_startup = 1
 
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+  return deoplete#close_popup() . "\<CR>"
+endfunction
+
 
 " Airline *********************************************************************
 if !exists('g:airline_symbols')
@@ -187,3 +209,13 @@ function! GetPylintRCArgs()
 endfunction
 
 Helptags
+
+" Set appropriate font. *******************************************************
+if exists("neovim_dot_app")
+  call MacSetFont("Inconsolata for Powerline", 13)
+endif 
+
+
+" neovim stuff ****************************************************************
+tnoremap <Esc> <C-\><C-n>
+noremap <localleader>vt :vsp term://bash\ --login<cr><C-w><C-r>
