@@ -2,14 +2,15 @@
 " Pathogen ********************************************************************
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
+
 set nocompatible
 
 
 " Colors **********************************************************************
-"set t_Co=256 " 256 colors
 syntax on " syntax highlighting
 set background=dark
 colorscheme gruvbox
+" set t_Co=256 " 256 colors
 
 
 " Filetype specific tab styles ************************************************
@@ -59,6 +60,10 @@ nmap <localleader>bh :call SmartBufferMove(1)<cr>
 nmap <localleader>bl :call SmartBufferMove(0)<cr>
 nmap <localleader>bd :bd<cr>
 nmap <localleader>bD :bd!<cr>
+
+nmap <D-[> :call SmartBufferMove(0)<cr>
+nmap <D-]> :call SmartBufferMove(1)<cr>
+
 
 " Misc ************************************************************************
 set backspace=indent,eol,start
@@ -171,11 +176,12 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-let g:airline_theme = 'serene'
+let g:airline_theme = 'muvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " -----------------------------------------------------------------------------
 " |                               PylintRC stuff                              |
@@ -212,6 +218,8 @@ Helptags
 
 " Set appropriate font. *******************************************************
 if exists("neovim_dot_app")
+  let g:airline_gui_mode = 'gui'
+
   call MacSetFont("Inconsolata for Powerline", 13)
 endif 
 
