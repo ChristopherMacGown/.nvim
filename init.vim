@@ -21,6 +21,7 @@ autocmd Filetype c      call languagestyles#C()
 autocmd Filetype go     call languagestyles#Go()
 autocmd Filetype vim    call languagestyles#Vimscript()
 autocmd Filetype python call languagestyles#Python()
+autocmd Filetype rust   call languagestyles#Rust()
 
 
 " Handle new tab CD properly **************************************************
@@ -96,6 +97,7 @@ set nolist
 
 " Don't search for python.
 let g:python_host_skip_check = 1
+let g:python_host_prog = '/Users/chris/bin/syspython2.sh'
 let g:python3_host_skip_check = 1
 
 " Status Line *****************************************************************
@@ -184,6 +186,18 @@ let g:airline#extensions#tabline#show_tab_nr = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " -----------------------------------------------------------------------------
+" |                               LLVM.NVIM stuff                             |
+" -----------------------------------------------------------------------------
+
+nmap <localleader>lb <Plug>LLBreakSwitch
+noremap <localleader>ln :LLsession new<CR>
+noremap <localleader>ld :LLmode debug<CR>
+noremap <localleader>ll :LL process launch<CR>
+noremap <localleader>lc :LL continue<CR>
+noremap <localleader>ls :LL step<CR>
+noremap <localleader>l<S-l> :LL process interrupt<CR>
+
+" -----------------------------------------------------------------------------
 " |                               PylintRC stuff                              |
 " -----------------------------------------------------------------------------
 
@@ -227,3 +241,4 @@ endif
 " neovim stuff ****************************************************************
 tnoremap <Esc> <C-\><C-n>
 noremap <localleader>vt :vsp term://bash\ --login<cr><C-w><C-r>
+set clipboard=unnamed

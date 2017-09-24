@@ -27,3 +27,11 @@ function! languagestyles#Vimscript()
 	call tabstyle#Tabstyle("Spaces", 2)
 	call colorcolumn#ColorColumn(80, 8)
 endfunction
+
+function! languagestyles#Rust()
+  call tabstyle#Tabstyle("Spaces", 4)
+  call colorcolumn#ColorColumn(120, 40)
+endfunction
+
+function! languagestyles#Javascript()
+endfunction
