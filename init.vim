@@ -8,8 +8,12 @@ set nocompatible
 
 " Colors **********************************************************************
 syntax on " syntax highlighting
-set background=dark
-colorscheme gruvbox
+
+
+let g:nord_comment_brightness=12
+let g:nord_uniform_status_lines=1
+
+colorscheme nord
 " set t_Co=256 " 256 colors
 
 
@@ -34,8 +38,8 @@ set equalalways " Multiple windows, when created, are equal in size
 
 
 "Vertical split then hop to new buffer
-:noremap <localleader>v :vsp<C-m><C-w><C-w><cr>
-:noremap <localleader>h :split<C-m><C-w><C-w><cr>
+:noremap <localleader><C-v> :vsp<C-m><C-w><C-w><cr>
+:noremap <localleader><C-h> :split<C-m><C-w><C-w><cr>
 
 " Moving around windows
 map <C-j> <C-w>j<C-w><Esc>
@@ -44,7 +48,7 @@ map <C-l> <C-w>l<C-w><Esc>
 map <C-h> <C-w>h<C-w><Esc>
 
 " Moving around buffers
-function! SmartBufferMove(direction) 
+function! SmartBufferSwitch(direction) 
   " Move to the previous or next buffer unless it's a terminal, in which case
   " skip it.
   if a:direction " Moving to the next buffer.
@@ -54,16 +58,37 @@ function! SmartBufferMove(direction)
   endif
 
   if matchstr(bufname(""), "term://") ==# "term://"
-    call SmartBufferMove(a:direction)
+    call SmartBufferSwitch(a:direction)
   endif
 endfunction
-nmap <localleader>bh :call SmartBufferMove(1)<cr>
-nmap <localleader>bl :call SmartBufferMove(0)<cr>
+
+function! SmartTabSwitch(direction)
+  " Move between tabs without wrapping.
+  
+  let tabcount = tabpagenr("$")
+
+  if a:direction 
+    if tabpagenr() != tabcount
+      tabnext
+    endif
+  else
+    if tabpagenr() != 1
+      tabprevious
+    endif
+  endif
+endfunction
+
+nmap <localleader>bh :call SmartBufferSwitch(1)<cr>
+nmap <localleader>bl :call SmartBufferSwitch(0)<cr>
 nmap <localleader>bd :bd<cr>
 nmap <localleader>bD :bd!<cr>
 
-nmap <D-[> :call SmartBufferMove(0)<cr>
-nmap <D-]> :call SmartBufferMove(1)<cr>
+map <D-[> :call SmartTabSwitch(0)<cr>
+map <D-]> :call SmartTabSwitch(1)<cr>
+imap <D-[> <ESC>:call SmartTabSwitch(0)<cr>
+imap <D-]> <ESC>:call SmartTabSwitch(1)<cr>
+"map <D-[> :tabprevious<cr>
+"map <D-]> :tabNext<cr>
 
 
 " Misc ************************************************************************
@@ -98,6 +123,7 @@ set nolist
 " Don't search for python.
 let g:python_host_skip_check = 1
 let g:python_host_prog = '/Users/chris/bin/syspython2.sh'
+let g:python3_host_prog = '/usr/local/bin/python3'
 let g:python3_host_skip_check = 1
 
 " Status Line *****************************************************************
@@ -139,6 +165,11 @@ let g:neomake_go_gometalinter_maker = {
 \     'errorformat': '%W%f:%l:%c:%m',
 \ }
 
+let g:neomake_rust_enabled_makers = ['cargo']
+
+" " Rust-Vim ******************************************************************** 
+" autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
+" autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs noremap <buffer> <F9> :make build<CR>
 
 " NERDTree ********************************************************************
 :noremap ,n :NERDTreeToggle<CR>
@@ -178,7 +209,7 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-let g:airline_theme = 'muvbox'
+"let g:airline_theme = 'nord'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -236,6 +267,9 @@ if exists("neovim_dot_app")
 
   call MacSetFont("Inconsolata for Powerline", 13)
 endif 
+
+" OrgMode stuff 
+let org_agenda_files = ['~/.org/index.org']
 
 
 " neovim stuff ****************************************************************

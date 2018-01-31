@@ -49,3 +49,9 @@
 [submodule "bundle/vim-speeddating"]
 	path = bundle/vim-speeddating
 	url = https://github.com/tpope/vim-speeddating
+[submodule "bundle/utl"]
+	path = bundle/utl
+	url = https://github.com/vim-scripts/utl.vim
+[submodule "bundle/nord-vim"]
+	path = bundle/nord-vim
+	url = git://github.com/arcticicestudio/nord-vim.git
