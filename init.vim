@@ -26,7 +26,11 @@ autocmd Filetype go     call languagestyles#Go()
 autocmd Filetype vim    call languagestyles#Vimscript()
 autocmd Filetype python call languagestyles#Python()
 autocmd Filetype rust   call languagestyles#Rust()
+autocmd Filetype javascript call languagestyles#Javascript()
 
+augroup filetypedetect
+  au BufRead,BufNewFile *.vue setfiletype javascript
+augroup END
 
 " Handle new tab CD properly **************************************************
 autocmd BufEnter * silent! tcd %:p:h
@@ -165,7 +169,8 @@ let g:neomake_go_gometalinter_maker = {
 \     'errorformat': '%W%f:%l:%c:%m',
 \ }
 
-let g:neomake_rust_enabled_makers = ['cargo']
+" let g:neomake_rust_cargo_command = ['check', '--all' '--all-targets']
+let g:neomake_rust_cargo_command = ['check', '--all', '--all-targets'] "'test', '--no-run']
 
 " " Rust-Vim ******************************************************************** 
 " autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
@@ -271,6 +276,8 @@ endif
 " OrgMode stuff 
 let org_agenda_files = ['~/.org/index.org']
 
+" Automatically call RustFmt on save;
+let g:rustfmt_autosave = 1
 
 " neovim stuff ****************************************************************
 tnoremap <Esc> <C-\><C-n>

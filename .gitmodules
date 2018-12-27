@@ -55,3 +55,12 @@
 [submodule "bundle/nord-vim"]
 	path = bundle/nord-vim
 	url = git://github.com/arcticicestudio/nord-vim.git
+[submodule "bundle/vim-localvimrc"]
+	path = bundle/vim-localvimrc
+	url = git@github.com:embear/vim-localvimrc.git
+[submodule "bundle/goyo.vim"]
+	path = bundle/goyo.vim
+	url = git@github.com:junegunn/goyo.vim.git
+[submodule "bundle/limelight.vim"]
+	path = bundle/limelight.vim
+	url = git@github.com:junegunn/limelight.vim.git

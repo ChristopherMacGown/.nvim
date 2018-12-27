@@ -34,4 +34,6 @@ function! languagestyles#Rust()
 endfunction
 
 function! languagestyles#Javascript()
+  call tabstyle#Tabstyle("Spaces", 2)
+  call colorcolumn#ColorColumn(120, 40)
 endfunction
