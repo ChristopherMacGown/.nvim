@@ -283,3 +283,18 @@ let g:rustfmt_autosave = 1
 tnoremap <Esc> <C-\><C-n>
 noremap <localleader>vt :vsp term://bash\ --login<cr><C-w><C-r>
 set clipboard=unnamed
+
+
+" Automatically enter Limelight on GoyoEnter
+augroup goyo_enter
+  autocmd!
+  autocmd User GoyoEnter Limelight
+  autocmd User GoyoEnter setlocal wrap
+augroup end
+
+" Automatically exit Limelight on GoyoLeave
+augroup goyo_leave
+  autocmd!
+  autocmd User GoyoLeave Limelight!
+  autocmd User GoyoLeave setlocal nowrap
+augroup end
