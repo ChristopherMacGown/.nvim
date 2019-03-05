@@ -37,3 +37,8 @@ function! languagestyles#Javascript()
   call tabstyle#Tabstyle("Spaces", 2)
   call colorcolumn#ColorColumn(120, 40)
 endfunction
+
+function! languagestyles#Gitcommit()
+  setlocal spell textwidth=72
+  call colorcolumn#ColorColumn(72, 22)
+endfunction

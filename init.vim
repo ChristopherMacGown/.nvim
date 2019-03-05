@@ -27,6 +27,7 @@ autocmd Filetype vim    call languagestyles#Vimscript()
 autocmd Filetype python call languagestyles#Python()
 autocmd Filetype rust   call languagestyles#Rust()
 autocmd Filetype javascript call languagestyles#Javascript()
+autocmd Filetype gitcommit call languagestyles#Gitcommit()
 
 augroup filetypedetect
   au BufRead,BufNewFile *.vue setfiletype javascript
@@ -126,7 +127,7 @@ set nolist
 
 " Don't search for python.
 let g:python_host_skip_check = 1
-let g:python_host_prog = '/Users/chris/bin/syspython2.sh'
+let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:python3_host_skip_check = 1
 
@@ -158,7 +159,7 @@ let g:neomake_message_sign = {'text': 'M➤', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_info_sign    = {'text': 'I➤', 'texthl': 'NeomakeInfoSign'}
 
 "let g:neomake_pylint_append_file = 0
-let g:neomake_python_enabled_makers = ['pylint']
+let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_pylint_args = neomake#makers#ft#python#pylint()['args']
 let g:neomake_go_enabled_makers     = ['go', 'gometalinter']
 let g:neomake_go_gometalinter_maker = {
@@ -199,14 +200,27 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
+" vim-virtualenv
+let g:virtualenv_directory = '/Users/chris/Intermix/.virtualenvs/'
+
+" YouCompleteMe
+let g:ycm_auto_trigger = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+nnoremap <leader>gt :YcmCompleter GetType<CR>
+nnoremap <leader>gd :YcmCompleter GetDoc<CR>
+nnoremap <leader>fx :YcmCompleter FixIt<CR>
+nnoremap <leader>fr :YcmCompleter RefactorRename<SPACE>
+nnoremap <leader>wo :VirtualEnvActivate <SPACE>
 
 " deoplete ********************************************************************
-let g:deoplete#enable_at_startup = 1
-
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-  return deoplete#close_popup() . "\<CR>"
-endfunction
+" let g:deoplete#enable_at_startup = 1
+" 
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>exp
+" function! s:my_cr_function() abort
+"   return deoplete#close_popup() . "\<CR>"
+" endfunction
 
 
 " Airline *********************************************************************
