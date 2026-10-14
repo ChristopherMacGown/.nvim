@@ -1,0 +1,125 @@
+{
+  "plugins": {
+    "blink.cmp": {
+      "rev": "b19413d214068f316c78978b08264ed1c41830ec",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "1.0.0 - 2.0.0"
+    },
+    "bufferline.nvim": {
+      "rev": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3",
+      "src": "https://github.com/akinsho/bufferline.nvim"
+    },
+    "cyberdream.nvim": {
+      "rev": "22b993f79c7aab934c00bfc3437d41f4621974dc",
+      "src": "git@github.com:scottmckendry/cyberdream.nvim"
+    },
+    "direnv.vim": {
+      "rev": "ab2a7e08dd630060cd81d7946739ac7442a4f269",
+      "src": "https://github.com/direnv/direnv.vim"
+    },
+    "everforest": {
+      "rev": "484dd560dccb2d2842685c441ad2b54a54ffef1b",
+      "src": "git@github.com:sainnhe/everforest"
+    },
+    "ghostty-default-style-dark.nvim": {
+      "rev": "b09d4d51f614cd1c14444d8586e0ba3ba3119787",
+      "src": "https://github.com/nkxxll/ghostty-default-style-dark.nvim"
+    },
+    "jj.nvim": {
+      "rev": "a9f0ca0031386dda531b9bd4d8602f0feac964f1",
+      "src": "/Users/Chris/Projects/jj.nvim"
+    },
+    "markdown-preview.nvim": {
+      "rev": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee",
+      "src": "https://github.com/iamcco/markdown-preview.nvim"
+    },
+    "mini.pick": {
+      "rev": "7c0a674f620ddc701903b887b2dade836b23ea79",
+      "src": "https://github.com/echasnovski/mini.pick"
+    },
+    "mkdir.nvim": {
+      "rev": "c55d1dee4f099528a1853b28bb28caa802eba217",
+      "src": "https://github.com/jghauser/mkdir.nvim"
+    },
+    "neo-tree.nvim": {
+      "rev": "1bd82358e516e3043796e207e64f50a11574af6e",
+      "src": "https://github.com/nvim-neo-tree/neo-tree.nvim"
+    },
+    "nui.nvim": {
+      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
+    },
+    "nvim-autopairs": {
+      "rev": "c2a0dd0d931d0fb07665e1fedb1ea688da3b80b4",
+      "src": "https://github.com/windwp/nvim-autopairs"
+    },
+    "nvim-dap": {
+      "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",
+      "src": "https://github.com/mfussenegger/nvim-dap"
+    },
+    "nvim-dap-go": {
+      "rev": "b4421153ead5d726603b02743ea40cf26a51ed5f",
+      "src": "https://github.com/leoluz/nvim-dap-go"
+    },
+    "nvim-dap-ui": {
+      "rev": "1a66cabaa4a4da0be107d5eda6d57242f0fe7e49",
+      "src": "https://github.com/rcarriga/nvim-dap-ui"
+    },
+    "nvim-dev-container": {
+      "rev": "59d85de531912c3def3061ae1d84c769e09a5653",
+      "src": "git@github.com:esensar/nvim-dev-container"
+    },
+    "nvim-lspconfig": {
+      "rev": "419b082102fa813739588dd82e19a8b6b2442855",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-nio": {
+      "rev": "21f5324bfac14e22ba26553caf69ec76ae8a7662",
+      "src": "https://github.com/nvim-neotest/nvim-nio"
+    },
+    "nvim-treesitter": {
+      "rev": "42fc28ba918343ebfd5565147a42a26580579482",
+      "src": "git@github.com:nvim-treesitter/nvim-treesitter"
+    },
+    "nvim-web-devicons": {
+      "rev": "746ffbb17975ebd6c40142362eee1b0249969c5c",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "oil.nvim": {
+      "rev": "7e1cd7703ff2924d7038476dcbc04b950203b902",
+      "src": "git@github.com:stevearc/oil.nvim"
+    },
+    "plenary.nvim": {
+      "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "remote-nvim.nvim": {
+      "rev": "9992c2fb8bf4f11aca2c8be8db286b506f92efcb",
+      "src": "git@github.com:amitds1997/remote-nvim.nvim"
+    },
+    "render-markdown.nvim": {
+      "rev": "1c958131c083c8557ea499fdb08c88b8afb05c4e",
+      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+    },
+    "telescope.nvim": {
+      "rev": "83a3a713d6b2d2a408491a1b959e55a7fa8678e8",
+      "src": "git@github.com:nvim-telescope/telescope.nvim"
+    },
+    "toggleterm.nvim": {
+      "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
+      "src": "https://github.com/akinsho/toggleterm.nvim"
+    },
+    "vague.nvim": {
+      "rev": "dba28050887c2810b5ebf9e0143b4e919bd55757",
+      "src": "git@github.com:vague2k/vague.nvim"
+    },
+    "vim-svelte-plugin": {
+      "rev": "f80ff67a94e3ac279fe55ecdf55ad7342f4a5228",
+      "src": "https://github.com/leafOfTree/vim-svelte-plugin"
+    },
+    "warm-burnout": {
+      "rev": "9f16a1ebbfcd37a5ca739a1cdd14b50649119ede",
+      "src": "https://github.com/felipefdl/warm-burnout"
+    }
+  }
+}
